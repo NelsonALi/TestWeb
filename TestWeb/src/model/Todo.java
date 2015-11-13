@@ -1,9 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -14,7 +12,7 @@ import java.sql.Timestamp;
  * 
  */
 @Entity
-@Table(name="TODOS", schema="testuserdb")
+@Table(name="TODOS", schema="nelson")
 @NamedQuery(name="Todo.findAll", query="SELECT t FROM Todo t")
 public class Todo implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -33,13 +31,17 @@ public class Todo implements Serializable {
 	@Column(name="INIT_TIME")
 	private Timestamp initTime;
 
+	@Column(name="STATUS_ID")
+	private BigDecimal statusId;
+
 	@Column(name="TODOER_NAME")
 	private String todoerName;
 
-	private int urgency;
+	private BigDecimal urgency;
 
-	//bi-directional many-to-one association to Status
-	@ManyToOne
+	//bi-directional one-to-one association to Status
+	@OneToOne
+	@JoinColumn(name="ID")
 	private Status status;
 
 	public Todo() {
@@ -77,6 +79,14 @@ public class Todo implements Serializable {
 		this.initTime = initTime;
 	}
 
+	public BigDecimal getStatusId() {
+		return this.statusId;
+	}
+
+	public void setStatusId(BigDecimal statusId) {
+		this.statusId = statusId;
+	}
+
 	public String getTodoerName() {
 		return this.todoerName;
 	}
@@ -85,11 +95,11 @@ public class Todo implements Serializable {
 		this.todoerName = todoerName;
 	}
 
-	public int getUrgency() {
+	public BigDecimal getUrgency() {
 		return this.urgency;
 	}
 
-	public void setUrgency(int urgency) {
+	public void setUrgency(BigDecimal urgency) {
 		this.urgency = urgency;
 	}
 

@@ -89,14 +89,14 @@ public interface ToDoerUtil {
 		boolean admin = false;
 		Todoer todoer = getTodoerByName(loginName);
 		if (todoer != null) {
-			if(todoer.getAdminrole()>0) admin = true;
+			if(todoer.getAdminrole().intValue()>0) admin = true;
 		}
 		return admin ;
 	}
 	public static boolean doerExist(String loginName) {
 		boolean exist = false;
-		Todoer tTodoer = getTodoerByName(loginName);
-		if (tTodoer != null) exist = true;
+		Todoer todoer = getTodoerByName(loginName);
+		if (todoer != null) exist = true;
 		return exist ;
 	}
 	public static Todoer getTodoerByName(String loginName) {

@@ -49,7 +49,7 @@ public class Register extends HttpServlet {
 		Todoer doer = new Todoer();
 		doer.setName("name");
 		doer.setEmail("email");
-		if (admin.equals("on")) doer.setAdminrole(1);
+		if (admin.equals("on")) doer.setAdminrole(new java.math.BigDecimal(String.valueOf(1)));
 		doer.setPassword("");
 		ToDoerUtil.insert(doer);
 		HttpSession session = request.getSession(true);

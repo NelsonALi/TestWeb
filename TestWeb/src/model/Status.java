@@ -1,10 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-import java.util.List;
 
 
 /**
@@ -12,7 +9,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="STATUS", schema="testuserdb")
+@Table(name="STATUS", schema="nelson")
 @NamedQuery(name="Status.findAll", query="SELECT s FROM Status s")
 public class Status implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -24,9 +21,9 @@ public class Status implements Serializable {
 
 	private String status;
 
-	//bi-directional many-to-one association to Todo
-	@OneToMany(mappedBy="status")
-	private List<Todo> todos;
+	//bi-directional one-to-one association to Todo
+	@OneToOne(mappedBy="status")
+	private Todo todo;
 
 	public Status() {
 	}
@@ -47,26 +44,12 @@ public class Status implements Serializable {
 		this.status = status;
 	}
 
-	public List<Todo> getTodos() {
-		return this.todos;
+	public Todo getTodo() {
+		return this.todo;
 	}
 
-	public void setTodos(List<Todo> todos) {
-		this.todos = todos;
-	}
-
-	public Todo addTodo(Todo todo) {
-		getTodos().add(todo);
-		todo.setStatus(this);
-
-		return todo;
-	}
-
-	public Todo removeTodo(Todo todo) {
-		getTodos().remove(todo);
-		todo.setStatus(null);
-
-		return todo;
+	public void setTodo(Todo todo) {
+		this.todo = todo;
 	}
 
 }

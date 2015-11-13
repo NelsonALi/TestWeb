@@ -1,6 +1,7 @@
 package business;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -59,7 +60,7 @@ public interface ToDosUtil {
 	
 	public static List<Todo> selectAll() {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		List<Todo> tList = new ArrayList<Todo>();
+		List<Todo> tList = new LinkedList<Todo>();
 		String qString = "select e from Todo e";
 		TypedQuery<Todo> q = (TypedQuery<Todo>) em.createQuery(qString, Todo.class);
 		try {

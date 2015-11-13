@@ -27,7 +27,7 @@
 				<c:forEach items="${todoList}" var="todos">
 					<tr>
 						<td>${todos.description}</td>
-						<td>${todos.status_id}</td>
+						<td>${todos.status.status[status_id]}</td>
 						<td>to_char(${todos.init_time}, 'MM/DD/YYYY HH:MI:SS AM')</td>
 						<td>to_char(${todos.due_date}, 'mm-dd-yy')</td>
 						<td>${todos.urgency}</td>

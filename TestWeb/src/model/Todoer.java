@@ -1,9 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.math.BigDecimal;
 
 
@@ -22,7 +20,7 @@ public class Todoer implements Serializable {
 	 @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "TODOER_SEQ" )
 	private long id;
 
-	private int adminrole;
+	private BigDecimal adminrole;
 
 	private String email;
 
@@ -41,11 +39,11 @@ public class Todoer implements Serializable {
 		this.id = id;
 	}
 
-	public int getAdminrole() {
+	public BigDecimal getAdminrole() {
 		return this.adminrole;
 	}
 
-	public void setAdminrole(int adminrole) {
+	public void setAdminrole(BigDecimal adminrole) {
 		this.adminrole = adminrole;
 	}
 

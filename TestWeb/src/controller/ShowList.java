@@ -45,6 +45,7 @@ public class ShowList extends HttpServlet {
 
 		response.setContentType("text/html");
 		LinkedList<Todo> todoList = new LinkedList<Todo>();
+		LinkedList<Todo> todos = new LinkedList<Todo>();
 		todoList = new LinkedList<Todo>(ToDosUtil.selectAll());
 		request.setAttribute("todoList", todoList);
 		getServletContext().getRequestDispatcher("/todoList.jsp").forward(request, response);		

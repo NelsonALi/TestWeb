@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * 
  */
 @Entity
-@Table(name="TODOER", schema="testuserdb")
+@Table(name="TODOER", schema="nelson")
 @NamedQuery(name="Todoer.findAll", query="SELECT t FROM Todoer t")
 public class Todoer implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,7 @@ public class Todoer implements Serializable {
 	 @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "TODOER_SEQ" )
 	private long id;
 
-	private BigDecimal adminrole;
+	private int adminrole;
 
 	private String email;
 
@@ -41,11 +41,11 @@ public class Todoer implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getAdminrole() {
+	public int getAdminrole() {
 		return this.adminrole;
 	}
 
-	public void setAdminrole(BigDecimal adminrole) {
+	public void setAdminrole(int adminrole) {
 		this.adminrole = adminrole;
 	}
 

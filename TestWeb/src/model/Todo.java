@@ -36,7 +36,7 @@ public class Todo implements Serializable {
 	@Column(name="TODOER_NAME")
 	private String todoerName;
 
-	private BigDecimal urgency;
+	private int urgency;
 
 	//bi-directional many-to-one association to Status
 	@ManyToOne
@@ -85,11 +85,11 @@ public class Todo implements Serializable {
 		this.todoerName = todoerName;
 	}
 
-	public BigDecimal getUrgency() {
+	public int getUrgency() {
 		return this.urgency;
 	}
 
-	public void setUrgency(BigDecimal urgency) {
+	public void setUrgency(int urgency) {
 		this.urgency = urgency;
 	}
 

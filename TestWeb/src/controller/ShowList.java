@@ -1,7 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import business.ToDoerUtil;
-import model.Todoer;
+import business.ToDosUtil;
+import model.Todo;
 
 /**
- * Servlet implementation class AddDoer
+ * Servlet implementation class ShowList
  */
-@WebServlet("/AddDoer")
-public class AddDoer extends HttpServlet {
+@WebServlet("/ShowList")
+public class ShowList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddDoer() {
+    public ShowList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +32,9 @@ public class AddDoer extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		ToDoerDB doerDB = new ToDoerDB();
-		Todoer doer = new Todoer();
-//		INSERT INTO testuserdb.TODOER (ID, ADMINROLE, EMAIL, NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
-		doer.setId(3);
-		doer.setName("anshy");
-		doer.setEmail("aa@zz");
-		doer.setAdminrole(new BigDecimal(0));
-		doer.setPassword("");
-		ToDoerUtil.insert(doer);
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -48,6 +42,11 @@ public class AddDoer extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	}
 
+		response.setContentType("text/html");
+		LinkedList<Todo> todoList = new LinkedList<Todo>();
+		todoList = new LinkedList<Todo>(ToDosUtil.selectAll());
+		request.setAttribute("todoList", todoList);
+		getServletContext().getRequestDispatcher("/todoList.jsp").forward(request, response);		
+        }
 }

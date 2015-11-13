@@ -85,28 +85,22 @@ public interface ToDoerUtil {
 		}
 		return tTodoer;
 	}
-	
-	public static boolean doerExist(String loginName) {
-		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-
-		boolean TodoerExist = false;
-		String qString = "select e from Todoer e where e.name = :loginName";
-		TypedQuery<Todoer> q = (TypedQuery<Todoer>) em.createQuery(qString, Todoer.class);
-		q.setParameter("loginName", loginName);
-		Todoer tTodoer = null;
-		try {
-			tTodoer = q.getSingleResult();
-			if (tTodoer != null) TodoerExist = true;
-		} catch (Exception e) {
-			System.out.println(e);
-		} finally {
-			em.close();
+	public static boolean isAdmin(String loginName) {
+		boolean admin = false;
+		Todoer todoer = getTodoerByName(loginName);
+		if (todoer != null) {
+			if(todoer.getAdminrole()>0) admin = true;
 		}
-		return TodoerExist ;
+		return admin ;
+	}
+	public static boolean doerExist(String loginName) {
+		boolean exist = false;
+		Todoer tTodoer = getTodoerByName(loginName);
+		if (tTodoer != null) exist = true;
+		return exist ;
 	}
 	public static Todoer getTodoerByName(String loginName) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-
 		String qString = "select e from Todoer e where e.name = :loginName";
 		TypedQuery<Todoer> q = (TypedQuery<Todoer>) em.createQuery(qString, Todoer.class);
 		q.setParameter("loginName", loginName);
@@ -120,5 +114,4 @@ public interface ToDoerUtil {
 		}
 		return todoer ;
 	}
-
 }

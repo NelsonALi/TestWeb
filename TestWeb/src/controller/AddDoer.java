@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import business.ToDoerUtil;
 import model.Todoer;
-import customTools.ToDoerDB;
 
 /**
  * Servlet implementation class AddDoer
@@ -33,10 +33,14 @@ public class AddDoer extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		ToDoerDB doerDB = new ToDoerDB();
 		Todoer doer = new Todoer();
-		doer.setName("John");
-		doer.setEmail("aaa@xxx");
+//		INSERT INTO testuserdb.TODOER (ID, ADMINROLE, EMAIL, NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
+		doer.setId(3);
+		doer.setName("anshy");
+		doer.setEmail("aa@zz");
 		doer.setAdminrole(new BigDecimal(0));
-		ToDoerDB.insert(doer);
+		doer.setPassword("");
+		ToDoerUtil.insert(doer);
+		
 	}
 
 	/**

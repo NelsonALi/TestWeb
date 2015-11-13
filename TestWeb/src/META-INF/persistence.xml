@@ -3,13 +3,13 @@
 	<persistence-unit name="TestWeb" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.Status</class>
-		<class>model.Todoer</class>
 		<class>model.Todo</class>
+		<class>model.Todoer</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-			<property name="javax.persistence.jdbc.user" value="testuserdb"/>
-			<property name="javax.persistence.jdbc.password" value="password"/>
+			<property name="javax.persistence.jdbc.user" value="nelson"/>
+			<property name="javax.persistence.jdbc.password" value="Sysword"/>
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
 		</properties>
 	</persistence-unit>
